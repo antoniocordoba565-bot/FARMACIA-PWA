@@ -187,6 +187,23 @@ function limpiar(){
     form.stock.value = '';
 }
 
+function reestablecerForm(){
+    editado = null;
+    form.reset();
+    form.codigo.disabled = false;
+    titleForm.textContent = 'Nuevo Medicamento';
+    save.textContent = 'Guardar';
+}
+
+lista.addEventListener('click', (e) =>{
+    const b = e.target.closest('button[data-action]');
+    if (!b) return;
+
+    b.dataset.action === 'editar' ? editar(b.dataset.id) : eliminar(b.dataset.id);
+});
+
+render();
+
 if( 'serviceWorker' in navigator){
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')

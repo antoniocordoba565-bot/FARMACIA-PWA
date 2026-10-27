@@ -117,3 +117,17 @@ form.addEventListener('submit', (e) => {
     reestablecerForm();
 });
 
+function esc( t ){
+    const d = document.createElement('div');
+    d.textContent = t;
+    return d.innerHTML;
+}
+
+let temporizador;
+function mostrarMensaje(mensaje){
+    toast.textContent = mensaje;
+    toast.classList.add('visible');
+    
+    clearTimeout(temporizador);
+    temporizador = setTimeout(()=>toast.classList.remove('visible'), 4000);
+}

@@ -151,3 +151,38 @@ function render () {
         </li>
     `).join('');
 }
+
+function eliminar(cod){
+    const est = leer().find( x => x.codigo === cod);
+    if( !est ) return;
+    
+    guardar( leer().filter( x => x.codigo !== cod) );
+    mostrarMensaje('Medicamento eliminado');
+    render();
+}
+
+function editar(cod){
+    const med = leer().find( x => x.codigo === cod);
+    if (!med) return;
+
+    editado = cod;
+    form.codigo.value = med.codigo;
+    form.nombre.value = med.nombre;
+    form.formula.value = med.formula;
+    form.precio.value = med.precio;
+    form.stock.value = med.stock;
+    
+    form.codigo.disabled = true;
+
+    form.querySelectorAll('input').forEach(validarCampo);
+    titleForm.textContent = 'Editar Medicamento';
+    save.textContent = 'Guardar Cambios';
+} 
+
+function limpiar(){
+    form.codigo.value = '';
+    form.nombre.value = '';
+    form.formula.value = '';
+    form.precio.value = '';
+    form.stock.value = '';
+}

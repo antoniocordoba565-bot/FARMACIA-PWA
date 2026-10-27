@@ -72,3 +72,11 @@ function validarCampo( input ){
     input.setAttribute('aria-invalid', msj ? 'true' : 'false');
     return !msj;
 }
+
+form.querySelectorAll('input').forEach( input => {
+    input.addEventListener('blur', () => validarCampo(input));
+    input.addEventListener('input', () => {
+        if( input.classList.contains('invalido')) 
+            validarCampo(input);
+    });
+});

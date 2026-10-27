@@ -58,4 +58,17 @@ const reglas ={
     }
 };
 
+function validarCampo( input ){
+    const valor = input.value.trim();
+    const reglaFn = reglas[input.name];
+    if (!reglaFn) return true;
+    
+    const msj = reglaFn(valor);
+    const errorEl = document.getElementById('err-' + input.name);
+    if (errorEl) errorEl.textContent = msj;
 
+    input.classList.toggle('invalido', !!msj);
+    input.classList.toggle('valido', !msj);
+    input.setAttribute('aria-invalid', msj ? 'true' : 'false');
+    return !msj;
+}

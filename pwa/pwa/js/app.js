@@ -80,3 +80,40 @@ form.querySelectorAll('input').forEach( input => {
             validarCampo(input);
     });
 });
+
+/*--Guardar / Eliminar / Editar--*/ 
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const inputs = [...form.querySelectorAll('input')];
+    const todoOk = inputs.map(validarCampo).every(Boolean);
+
+    if(!todoOk){
+        const primerInvalido = inputs.find(i => i.classList.contains('invalido'));
+        if (primerInvalido) primerInvalido.focus();
+        return;
+    }
+    
+    const medicamento = {
+        codigo : form.codigo.value.trim(),
+        nombre : form.nombre.value.trim(),
+        formula : form.formula.value.trim(),
+        precio : parseFloat(form.precio.value.trim()).toFixed(2),
+        stock : parseInt(form.stock.value.trim())
+    };
+
+    let datos = leer();
+
+    if(editado) {
+        datos = datos.map(x => x.codigo === editado ? medicamento : x); 
+    }else{
+        datos.push(medicamento);
+    }
+    guardar(datos);
+    mostrarMensaje('Medicamento guardado correctamente');
+    render();
+
+    limpiar();
+    editado = null;
+    reestablecerForm();
+});
+

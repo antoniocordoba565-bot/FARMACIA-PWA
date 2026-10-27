@@ -186,3 +186,11 @@ function limpiar(){
     form.precio.value = '';
     form.stock.value = '';
 }
+
+if( 'serviceWorker' in navigator){
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then( () => console.log('Service worker de Farmacia registrado'))
+            .catch( err => console.log('Service worker falló', err))
+    })
+}

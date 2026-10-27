@@ -131,3 +131,23 @@ function mostrarMensaje(mensaje){
     clearTimeout(temporizador);
     temporizador = setTimeout(()=>toast.classList.remove('visible'), 4000);
 }
+
+function render () {
+    const datos = leer();
+    contador.textContent = `(${datos.length})`;
+    vacio.hidden = datos.length > 0;
+    
+    lista.innerHTML = datos.map(e => ` 
+        <li class="items">
+            <div class="datos">
+                <strong>${esc(e.nombre)}</strong><br>
+                <small>Fórmula: ${esc(e.formula)} | Código: ${esc(e.codigo)}</small><br>
+                <span>Precio: $${esc(e.precio)} | Stock: ${esc(e.stock)} pzas</span>
+            </div>
+            <div class="botones">
+                <button class="btn btn-warning" data-action="editar" data-id="${esc(e.codigo)}">Editar</button>
+                <button class="btn btn-danger" data-action="eliminar" data-id="${esc(e.codigo)}">Eliminar</button>
+            </div>
+        </li>
+    `).join('');
+}

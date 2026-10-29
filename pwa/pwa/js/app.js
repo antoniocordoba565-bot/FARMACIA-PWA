@@ -153,10 +153,16 @@ function render () {
 }
 
 function eliminar(cod){
-    const est = leer().find( x => x.codigo === cod);
-    if( !est ) return;
-    
-    guardar( leer().filter( x => x.codigo !== cod) );
+    const est = leer().find(x => x.codigo === cod);
+    if (!est) return;
+
+    const confirmar = confirm(
+        `¿Está seguro de eliminar el medicamento "${est.nombre}"?`
+    );
+
+    if (!confirmar) return;
+
+    guardar(leer().filter(x => x.codigo !== cod));
     mostrarMensaje('Medicamento eliminado');
     render();
 }

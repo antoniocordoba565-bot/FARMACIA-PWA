@@ -1,5 +1,6 @@
 :root {
 --bg: #f8fafc;
+--bg2: #ffd1f8;
 --color: #0f172a;
 --panel: #ffffff;
 --border: #cbd5e1;
@@ -15,7 +16,7 @@
 }
 
 body{
-    background-color: var(--error);
+    background-color: var(--bg2);
     color: var(--panel);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -163,6 +164,7 @@ small.error{
 
 .datos {
     font-size: 0.95rem;
+    color: var(--color);
 }
 
 .datos strong {

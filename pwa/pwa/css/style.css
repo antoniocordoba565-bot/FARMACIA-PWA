@@ -15,8 +15,8 @@
 }
 
 body{
-    background-color: var(--bg);
-    color: var(--color);
+    background-color: var(--error);
+    color: var(--panel);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

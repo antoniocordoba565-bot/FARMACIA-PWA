@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#059669">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    <link rel="apple-touch-icon" href="images/icon-50.png">
+    
 </head>
 <body>
     <header class="top">
+        <img class="logo" src="images/icon-50.png" alt="Logo Farmacia" width="50" height="50">
         <h1>Farmacia Super Morelos</h1>
         <span class="status" id="status">Sistema en Línea</span>
     </header>
@@ -55,7 +59,10 @@
                 </field>
 
                 <div class="actions">
-                    <button type="submit" id="save" class="btn btn-save">Guardar</button>
+                    <button type="submit" id="save" class="btn btn-save">
+                        <img src="images/icon-192.png" alt="Logo Farmacia" class="btn-icon" width="20" height="20">
+                        Guardar
+                    </button>
                     <button type="reset" id="cancel" class="btn btn-cancel" onclick="reestablecerForm()">Cancelar</button>
                 </div>
             </form>
